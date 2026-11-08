@@ -1,6 +1,6 @@
 hi
 
-# Mandelbrot Explorer
+## mandelbrot explorer
 
 this is my first upload for my upcoming solution for:
 Vinícius da Silva, Tiago Novello, Hélio Lopes and Luiz Velho. 2021.
@@ -61,8 +61,9 @@ wrote the code myself (0 ai generated code in the actual project)
 claude was used as tutor and code reviewer tho
 bench_live.py was only AI-generated upload
 
-#### Upcoming Roadmap
- - implemetn error handling (negative numbers, fractions getting to small, etc)
+#### upcoming roadmap
+ - implement error handling (negative numbers, fractions getting to small, etc)
+ - implement interactive slider or buttons to increase resolution and/or steps
  - numpy speedup
  - julia sets
  - distance functions and ray marching
