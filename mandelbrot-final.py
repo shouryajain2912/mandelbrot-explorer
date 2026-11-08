@@ -61,7 +61,7 @@ if __name__ == "__main__":
     height = int(input("Enter Height: "))
     max_steps = int(input("Enter Max Steps: "))
 
-    choice = int(input("Choose color by entering the appropiate number:\n1. magma\n2. twilight\n3. viridis\n4. gray\n"))
+    choice = int(input("Choose color by entering the appropriate number:\n1. magma\n2. twilight\n3. viridis\n4. gray\n"))
 
     if choice == 1:
         color = "magma"
@@ -82,7 +82,11 @@ if __name__ == "__main__":
         fig.colorbar(im, label="steps before escaping")
         ax.set_xlabel("real")
         ax.set_ylabel("imaginary")
+        original = [xmin, xmax, ymin, ymax]
         last = [xmin, xmax, ymin, ymax]
+        timers = []
+        def repaint():
+            fig.canvas.draw_idle()
         def on_draw(event):
             new_xmin, new_xmax = ax.get_xlim()
             new_ymin, new_ymax = ax.get_ylim()
@@ -93,14 +97,16 @@ if __name__ == "__main__":
                     flag+=1
                     last[i] = new_limits[i]
             if flag:
-                print(f"zoomed to:\nY: {last[0]}, {last[1]}\nX: {last[2]}, {last[3]}")
+                print(f"zoomed to:\nY: {last[2]}, {last[3]}\nX: {last[0]}, {last[1]}")
                 new_image = render(new_ymax, new_ymin, new_xmax, new_xmin, width, height, max_steps, pool)
-            else:
-                new_image = image
-            im.set_data(new_image)
-            im.set_extent((new_xmin, new_xmax,new_ymin, new_ymax))
-            im.set_clim(new_image.min(), new_image.max())
-            fig.canvas.draw_idle()
-            
+                im.set_data(new_image)
+                im.set_extent((new_xmin, new_xmax,new_ymin, new_ymax))
+                im.set_clim(new_image.min(), new_image.max())
+                timers.clear()
+                timer = fig.canvas.new_timer(interval=50)
+                timer.single_shot = True
+                timer.add_callback(repaint)
+                timer.start()
+                timers.append(timer)
         fig.canvas.mpl_connect("draw_event", on_draw)
         plt.show()
