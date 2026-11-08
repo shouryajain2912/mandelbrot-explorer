@@ -36,7 +36,6 @@ https://arxiv.org/abs/2102.01747
  - using more cores doesnt give linearly more speed in calculations but it does increase (16 cores give 8.8x the speedup compared to 1 for 9600x6400 200 steps)
  - the number of max steps help to differentiate between the pixels more as you increase the number of them (you can keep it one and then 5 and then 10 to see what i mean easily)
  - using higher numbers in width and height also means higher compute times (obviously but it grows fast), a 600x400 vs a 1200x800 is a 4x increase in compute since the number of pixels quadruples with height and width both doubling
- - float64 runs out at rougly 1e-13 per pixel
 
 ### TRY THIS:
 whole set:
@@ -51,6 +50,10 @@ triple spiral valley:
  - YMAX 0.674, YMIN 0.634, XMAX -0.058, XMIN -0.118, 300 steps
 sehouse spiral (deep): (this is quite deep so you can only zoom a few times)
  - YMAX 0.11603, YMIN 0.10937, XMAX -0.7403, XMIN -0.7503, 500 steps 
+
+### Bugs and Limitations:
+ - no bugs indentified for now, let me know if you find them
+ - float64 runs out at rougly 1e-13 per pixel
 
 ### about the project:
 i found this paper randomly while going through ideas for a hackathon, couldnt attend the hackathon but this idea intrigued me. so this project is me learning everything i need to know about this background of fractals with coding and 3d graphics to solve any problems in the paper (still havent read it just the title intrigued me so i started this lol)
