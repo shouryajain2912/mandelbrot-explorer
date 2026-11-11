@@ -62,7 +62,6 @@ claude was used as tutor and code reviewer tho
 bench_live.py was only AI-generated upload
 
 #### upcoming roadmap
- - implement error handling (negative numbers, fractions getting to small, etc)
  - implement interactive slider or buttons to increase resolution and/or steps
  - numpy speedup
  - julia sets

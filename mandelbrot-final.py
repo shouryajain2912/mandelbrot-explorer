@@ -52,14 +52,22 @@ def render (ymax, ymin ,xmax, xmin, width, height, max_steps, pool):
     return image
 
 if __name__ == "__main__":
-    ymax = float(input("Enter YMAX: "))
-    ymin = float(input("Enter YMIN: "))
-    xmax = float(input("Enter XMAX: "))
-    xmin = float(input("Enter XMIN: "))
-
-    width = int(input("Enter Width: "))
-    height = int(input("Enter Height: "))
-    max_steps = int(input("Enter Max Steps: "))
+    ymax = float(input("Enter ymax: "))
+    ymin = float(input("Enter ymin: "))
+    xmax = float(input("Enter xmax: "))
+    xmin = float(input("Enter xmin: "))
+    
+    width = int(input("Enter width: "))
+    if width<1:
+        print("width must be a positive integer\ndefaulting to 600")
+        width = 600
+    height = int(input("Enter height: "))
+    if height>1:
+        print("height must be a positive integer\ndefaulting to 2/3*width")
+        hegiht = 2/3*width
+    max_steps = int(input("Enter max steps: "))
+    if max_steps<1:
+        print("max steps must be positive\ndefaulting to 100")
 
     choice = int(input("Choose color by entering the appropriate number:\n1. magma\n2. twilight\n3. viridis\n4. gray\n"))
 
@@ -74,7 +82,12 @@ if __name__ == "__main__":
     else:
         print("Incorrect input, defaulting to magma:")
         color = "magma"
+        
     processosors = int(input("Enter the number of processors you want to use(1-18): "))
+    if processosors<1:
+        print("number of processors must be greater than or equal to 1\ndefaulting to 1")
+        processosors = 1
+        
     with mp.Pool(processes = processosors) as pool:
         image = render(ymax, ymin, xmax, xmin, width, height, max_steps, pool)
         fig, ax = plt.subplots()
