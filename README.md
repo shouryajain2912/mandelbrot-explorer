@@ -28,7 +28,7 @@ https://arxiv.org/abs/2102.01747
 #### processing:
  - it takes the number and for every pixel (every coordinate using the width and height)
  - every pixel's coordinate value is calculated by using the x and y limits
- - then every pixel is put thru the loop of z = z*z + c where the pixel coordinates is c and z = 0 in the start to find the number of steps before it escapes (modulus of z becomes greater than 2)
+ - then every pixel is put thru the loop of z = z*z + c where the pixel coordinates is c and z = 0 in the start to find the number of steps before it escapes (modulus of z becomes 2 or greater)
  - when the image opens you can zoom in and the zoomed in coordinates are used to recalculate, you get the same resolution (width and height and max steps and number of processors used)
  - pressing home resets back to the original limits
 

@@ -83,12 +83,12 @@ if __name__ == "__main__":
         print("Incorrect input, defaulting to magma:")
         color = "magma"
         
-    processosors = int(input("Enter the number of processors you want to use(1-18): "))
-    if processosors<1:
+    processors = int(input("Enter the number of processors you want to use(1-18): "))
+    if processors<1:
         print("number of processors must be greater than or equal to 1\ndefaulting to 1")
-        processosors = 1
+        processors = 1
         
-    with mp.Pool(processes = processosors) as pool:
+    with mp.Pool(processes = processors) as pool:
         image = render(ymax, ymin, xmax, xmin, width, height, max_steps, pool)
         fig, ax = plt.subplots()
         im = ax.imshow(image, extent=(xmin, xmax, ymin, ymax), cmap = color)
